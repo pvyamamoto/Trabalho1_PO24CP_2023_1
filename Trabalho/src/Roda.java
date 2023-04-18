@@ -1,4 +1,3 @@
-package Trabalho.src;
 import java.util.Random;
 
 public class Roda {
