@@ -84,6 +84,7 @@ public class Veiculo {
             for(int i = 0; i<this.desenho.length; i++){
                 this.desenho[i] = "     "+this.desenho[i];
             }
+            this.setCombustivel(this.getCombustivel() - 0.55);
             return desenho;
         }else
             return desenho;
