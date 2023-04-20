@@ -20,7 +20,20 @@ public class Veiculo {
         this.setCombustivel(2.5); // combustivel base tem q ser 2.5
         this.setDesenho(); // desenho do carro
     }
-
+    public String[] mover(){
+        if((this.getCombustivel() > 0) && (this.isIpva())){
+            for(int i = 0; i<this.getQuantidadeRodas(); i++){
+                if(!rodas[i].isCalibragemPneu())
+                    return desenho;
+            }
+            for(int i = 0; i<this.desenho.length; i++){
+                this.desenho[i] = "     "+this.desenho[i];
+            }
+            this.setCombustivel(this.getCombustivel() - 0.55);
+            return desenho;
+        }else
+            return desenho;
+    }
     public int nextId(){
          return id+=1;
     }
@@ -73,21 +86,6 @@ public class Veiculo {
 
     public void setCombustivel(double combustivel){
         this.combustivel = combustivel;
-    }
-
-    public String[] mover(){
-        if((this.getCombustivel() > 0) && (this.isIpva())){
-            for(int i = 0; i<this.getQuantidadeRodas(); i++){
-                if(!rodas[i].isCalibragemPneu())
-                    return desenho;
-            }
-            for(int i = 0; i<this.desenho.length; i++){
-                this.desenho[i] = "     "+this.desenho[i];
-            }
-            this.setCombustivel(this.getCombustivel() - 0.55);
-            return desenho;
-        }else
-            return desenho;
     }
     public String[] getDesenho() {
         return desenho;
