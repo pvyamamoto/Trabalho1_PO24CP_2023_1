@@ -22,7 +22,8 @@ public class Veiculo {
     }
 
     public int nextId(){
-         return id++; // aumenta o ID (pode dat BO pq nao tenho ctz se é assim que a variavel static funciona)
+         return id+1; // aumenta o ID (pode dat BO pq nao tenho ctz se é assim que a variavel static funciona)
+        // se pa tem q iniciar ele como zero e add + 1, se pa mexe com a posi na memoria, vo muda pra + 1
     }
 
     public int getId() {
