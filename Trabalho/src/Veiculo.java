@@ -7,7 +7,6 @@ public class Veiculo {
     private Roda[] rodas;
     private int quantidadeRodas;
     private boolean ipva;
-
     private double combustivel;
 
     public Veiculo(){
@@ -73,5 +72,9 @@ public class Veiculo {
 
     public void setCombustivel(double combustivel){
         this.combustivel = combustivel;
+    }
+
+    public void mover(){
+
     }
 }
