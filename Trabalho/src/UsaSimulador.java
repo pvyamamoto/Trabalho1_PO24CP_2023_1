@@ -32,7 +32,7 @@ public class UsaSimulador {
             switch(opcao){
                 case 1:
                     simulador.incluirVeiculo();
-                    System.out.println("O veiculo (concatenar id do veiculo)foi adicionado");
+                    System.out.println("O veiculo "+simulador.getVeiculos()+" foi adicionado");
                     break;
                 case 2:
                     System.out.println("Informe o id do veiculo que voce deseja remover:");
@@ -44,7 +44,7 @@ public class UsaSimulador {
                     System.out.println("Informe o id do veiculo que voce deseja abastecer:");
                     auxId = teclado.nextInt();
                     simulador.abastecer(auxId);
-                    System.out.println("O veiculo com o id: "+auxId+" esta com (Litros) de gasolina no tanque");
+                    System.out.println("O veiculo com o id: "+auxId+" esta com "+simulador.getVeiculos()[auxId].getCombustivel()+" de gasolina no tanque");
                     break;
                 case 4:
                     System.out.println("Informe o id do veiculo que voce deseja movimentar:");
@@ -57,7 +57,9 @@ public class UsaSimulador {
                     System.out.println("Todos os veiculos foram movidos!");
                     break;
                 case 6:
-                    simulador.toString();
+                    System.out.println("Informe o id do veiculo que voce deseja saber os dados:");
+                    auxId = teclado.nextInt();
+                    simulador.getVeiculos()[auxId].toString();
                     break;
                 case 7:
                     System.out.println("Os carros sao os seguintes:");
@@ -68,7 +70,7 @@ public class UsaSimulador {
                 case 8:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar o pneu:");
                     auxId = teclado.nextInt();
-                    System.out.println("Informe a roda do pneu (1-4):");
+                    System.out.println("Informe o pneu do carro (1-4):");
                     int pneu = teclado.nextInt();
                     simulador.getVeiculos()[auxId].getRodas()[pneu].setCalibragemPneu(true);
                     System.out.println("O pneu "+pneu+", do carro "+auxId+" esta calibrado!");
@@ -76,8 +78,25 @@ public class UsaSimulador {
                 case 9:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar os pneus:");
                     auxId = teclado.nextInt();
-                    for(int i=0;i<simula)
-
+                    for(int i=0;i<simulador.getVeiculos()[auxId].getRodas().length;i++){
+                        simulador.getVeiculos()[auxId].getRodas()[i].setCalibragemPneu(true);
+                    }
+                    System.out.println("Todos os pneus do carro "+auxId+" foram calibrados");
+                    break;
+                case 10:
+                    simulador.imprimirPista();
+                    break;
+                case 11:
+                    System.out.println("Os veiculos foram Gravados");
+                    break;
+                case 12:
+                    System.out.println("Informe o arquivo que será lido");
+                    break;
+                case 13:
+                    System.out.println("Voce saiu da aplicacao ");
+                    break;
+                default:
+                    System.out.println("Opcao invalida. Tente Novamente");
             }
 
 
