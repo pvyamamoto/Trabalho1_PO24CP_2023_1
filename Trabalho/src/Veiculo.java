@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Veiculo {
     private static int id = 0; // variavel statica pra poder aumentar +1 no ID toda vez q criar um obj novo
-    private String desenho;
+    private String[] desenho;
     private int distanciaPercorrida;
     private Roda[] rodas;
     private int quantidadeRodas;
@@ -16,7 +16,7 @@ public class Veiculo {
         this.setDistanciaPercorrida(0);
         this.setQuantidadeRodas(4);
         this.setIpva(rd.nextBoolean()); // gerar ipva aleatorio
-        this.setRodas(this.rodas);
+        this.setRodas();
         this.setCombustivel(2.5); // combustivel base tem q ser 2.5
     }
 
@@ -44,7 +44,7 @@ public class Veiculo {
         return rodas;
     }
 
-    public void setRodas(Roda[] rodas){  // mudei o 4 pela variavel qntRodas pq se nao nao faz sentido ter a variavel
+    public void setRodas(){  // mudei o 4 pela variavel qntRodas pq se nao nao faz sentido ter a variavel
         for(int i=0;i<this.getQuantidadeRodas();i++){
             this.rodas[i] = new Roda();
         }
@@ -76,5 +76,15 @@ public class Veiculo {
 
     public void mover(){
 
+    }
+    public String[] getDesenho() {
+        return desenho;
+    }
+
+    public void setDesenho(){
+        this.desenho[0] = "    ____\n";
+        this.desenho[1] = " __/  |_ \\_\n";
+        this.desenho[2] = "|  _     _``-.\n";
+        this.desenho[3] = "'-(_)---(_)--'\n\n\n";
     }
 }
