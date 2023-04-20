@@ -17,7 +17,7 @@ public class Veiculo {
         this.setDistanciaPercorrida(0);
         this.setQuantidadeRodas(4);
         this.setIpva(rd.nextBoolean()); // gerar ipva aleatorio
-        this.setRodas(this.rodas);
+        this.setRodas(this.rodas, this.getQuantidadeRodas());
         this.setCombustivel(2.5); // combustivel base tem q ser 2.5
     }
 
@@ -46,7 +46,7 @@ public class Veiculo {
         return rodas;
     }
 
-    public void setRodas(Roda[] rodas, int quantidadeRodas) {  // mudei o 4 pela variavel qntRodas pq se nao nao faz sentido
+    public void setRodas(Roda[] rodas, int quantidadeRodas) {  // mudei o 4 pela variavel qntRodas pq se nao nao faz sentido ter a variavel
         for(int i=0;i<this.getQuantidadeRodas();i++){
             this.rodas[i] = new Roda();
         }
