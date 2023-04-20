@@ -26,37 +26,37 @@ public class Veiculo {
         // se pa tem q iniciar ele como zero e add + 1, se pa mexe com a posi na memoria, vo muda pra + 1
     }
 
-    public int getId() {
+    public int getId(){
         return id;
     }
 
-    public void setId(int id) {
+    public void setId(int id){
         this.id = id;
     }
 
-    public int getDistanciaPercorrida() {
+    public int getDistanciaPercorrida(){
         return distanciaPercorrida;
     }
 
-    public void setDistanciaPercorrida(int distanciaPercorrida) {
+    public void setDistanciaPercorrida(int distanciaPercorrida){
         this.distanciaPercorrida = distanciaPercorrida;
     }
 
-    public Roda[] getRodas() {
+    public Roda[] getRodas(){
         return rodas;
     }
 
-    public void setRodas(Roda[] rodas) {  // mudei o 4 pela variavel qntRodas pq se nao nao faz sentido ter a variavel
+    public void setRodas(Roda[] rodas){  // mudei o 4 pela variavel qntRodas pq se nao nao faz sentido ter a variavel
         for(int i=0;i<this.getQuantidadeRodas();i++){
             this.rodas[i] = new Roda();
         }
     }
 
-    public int getQuantidadeRodas() {
+    public int getQuantidadeRodas(){
         return this.quantidadeRodas;
     }
 
-    public void setQuantidadeRodas(int quantidadeRodas) {
+    public void setQuantidadeRodas(int quantidadeRodas){
         this.quantidadeRodas = quantidadeRodas;
     }
 
@@ -64,15 +64,15 @@ public class Veiculo {
         return ipva;
     }
 
-    public void setIpva(boolean ipva) {
+    public void setIpva(boolean ipva){
         this.ipva = ipva;
     }
 
-    public double getCombustivel() {
+    public double getCombustivel(){
         return combustivel;
     }
 
-    public void setCombustivel(double combustivel) {
+    public void setCombustivel(double combustivel){
         this.combustivel = combustivel;
     }
 }
