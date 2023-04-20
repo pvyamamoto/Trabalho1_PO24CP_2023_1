@@ -80,7 +80,6 @@ public class Veiculo {
     public String[] getDesenho() {
         return desenho;
     }
-
     public void setDesenho(){
         this.desenho[0] = "    ____\n";
         this.desenho[1] = " __/  |_ \\_\n";
