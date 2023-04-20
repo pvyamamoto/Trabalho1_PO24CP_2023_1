@@ -18,6 +18,7 @@ public class Veiculo {
         this.setIpva(rd.nextBoolean()); // gerar ipva aleatorio
         this.setRodas();
         this.setCombustivel(2.5); // combustivel base tem q ser 2.5
+        this.setDesenho(); // desenho do carro
     }
 
     public int nextId(){
