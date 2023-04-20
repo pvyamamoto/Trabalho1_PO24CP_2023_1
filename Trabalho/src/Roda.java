@@ -18,7 +18,7 @@ public class Roda {
     }
 
     public boolean isCalibragemPneu() {
-        return calibragemPneu;
+        return this.calibragemPneu;
     }
 
     public void setCalibragemPneu(boolean calibragemPneu) {

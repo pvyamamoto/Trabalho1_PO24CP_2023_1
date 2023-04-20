@@ -46,14 +46,14 @@ public class Veiculo {
         return rodas;
     }
 
-    public void setRodas(Roda[] rodas) {  // setando as 4 rodas com instancias novas para gerar os booleans aleatorios dos construtores
-        for(int i=0;i<4;i++){
+    public void setRodas(Roda[] rodas, int quantidadeRodas) {  // mudei o 4 pela variavel qntRodas pq se nao nao faz sentido
+        for(int i=0;i<this.getQuantidadeRodas();i++){
             this.rodas[i] = new Roda();
         }
     }
 
     public int getQuantidadeRodas() {
-        return quantidadeRodas;
+        return this.quantidadeRodas;
     }
 
     public void setQuantidadeRodas(int quantidadeRodas) {
