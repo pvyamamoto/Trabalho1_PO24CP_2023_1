@@ -47,7 +47,7 @@ public class Veiculo {
     }
 
     public void setRodas(Roda[] rodas, int quantidadeRodas) {  // mudei o 4 pela variavel qntRodas pq se nao nao faz sentido ter a variavel
-        for(int i=0;i<this.getQuantidadeRodas();i++){
+        for(int i=0;i<quantidadeRodas;i++){
             this.rodas[i] = new Roda();
         }
     }
