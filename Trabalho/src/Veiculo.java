@@ -75,8 +75,18 @@ public class Veiculo {
         this.combustivel = combustivel;
     }
 
-    public void mover(){
-
+    public String[] mover(){
+        if((this.getCombustivel() > 0) && (this.isIpva())){
+            for(int i = 0; i<this.getQuantidadeRodas(); i++){
+                if(!rodas[i].isCalibragemPneu())
+                    return desenho;
+            }
+            for(int i = 0; i<this.desenho.length; i++){
+                this.desenho[i] = "     "+this.desenho[i];
+            }
+            return desenho;
+        }else
+            return desenho;
     }
     public String[] getDesenho() {
         return desenho;
