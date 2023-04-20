@@ -22,7 +22,7 @@ public class Veiculo {
     }
 
     public int nextId(){
-         return id+1;
+         return id+=1;
     }
 
     public int getId(){
