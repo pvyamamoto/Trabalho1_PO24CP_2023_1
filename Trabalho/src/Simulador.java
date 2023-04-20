@@ -1,6 +1,6 @@
 public class Simulador {
 
-    private int id;
+    private Veiculo[] veiculos;
     private static int qtidVeiculos;
 
     public void incluirVeiculo(int id){
@@ -34,11 +34,4 @@ public class Simulador {
     }
 
 
-    public int getId() {
-        return id;
-    }
-
-    public void setId(int id) {
-        this.id = id;
-    }
 }
