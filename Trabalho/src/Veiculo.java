@@ -23,16 +23,23 @@ public class Veiculo {
     public String[] mover(){
         if((this.getCombustivel() > 0) && (this.isIpva())){
             for(int i = 0; i<this.getQuantidadeRodas(); i++){
-                if(!rodas[i].isCalibragemPneu())
+                if(!this.getRodas()[i].isCalibragemPneu())
                     return desenho;
             }
             for(int i = 0; i<this.desenho.length; i++){
                 this.desenho[i] = "     "+this.desenho[i];
             }
             this.setCombustivel(this.getCombustivel() - 0.55);
+            this.setDistanciaPercorrida(this.getDistanciaPercorrida() + 5);
+
             return desenho;
         }else
             return desenho;
+    }
+    public String toString(){
+        return ("Id: "+this.getId()+"\nQuantidade de rodas: "+this.getQuantidadeRodas()+
+                ((this.isIpva()) ? "\nIpva esta pago" : "\nIpva nao esta pago")+"\nCombustivel no tanque: "
+                +this.getCombustivel()+"L"+ "\nDistancia percorrida: "+this.distanciaPercorrida+" blocos");
     }
     public int nextId(){
          return id+=1;
