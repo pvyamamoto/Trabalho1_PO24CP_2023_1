@@ -18,7 +18,7 @@ public class Simulador {
     }
 
     public void abastecer(int id, double quant){
-        this.getVeiculos()[id].setCombustivel(quant);
+        this.getVeiculos()[id].setCombustivel(this.getVeiculos()[id].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
     }
 
     public void mover(int id){

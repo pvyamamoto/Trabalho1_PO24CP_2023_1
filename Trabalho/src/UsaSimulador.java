@@ -32,7 +32,7 @@ public class UsaSimulador {
             switch(opcao){
                 case 1:
                     simulador.incluirVeiculo();
-                    System.out.println("O veiculo "+simulador.getVeiculos()+" foi adicionado");
+                    System.out.println("O veiculo "+simulador.getVeiculos()[simulador.getQtidVeiculos()].getId()+" foi adicionado");
                     break;
                 case 2:
                     System.out.println("Informe o id do veiculo que voce deseja remover:");
@@ -43,7 +43,9 @@ public class UsaSimulador {
                 case 3:
                     System.out.println("Informe o id do veiculo que voce deseja abastecer:");
                     auxId = teclado.nextInt();
-                    simulador.abastecer(auxId);
+                    System.out.println("Informe quanto de gasolina gostaria de colocar:");
+                    double auxD = teclado.nextDouble();
+                    simulador.abastecer(auxId,auxD);
                     System.out.println("O veiculo com o id: "+auxId+" esta com "+simulador.getVeiculos()[auxId].getCombustivel()+" de gasolina no tanque");
                     break;
                 case 4:
@@ -53,7 +55,7 @@ public class UsaSimulador {
                     System.out.println("O veiculo com o id: "+auxId+" se moveu");
                     break;
                 case 5:
-                    simulador.mover();
+                    simulador.moverTodos();
                     System.out.println("Todos os veiculos foram movidos!");
                     break;
                 case 6:
@@ -98,22 +100,7 @@ public class UsaSimulador {
                 default:
                     System.out.println("Opcao invalida. Tente Novamente");
             }
-
-
-
-
-
-
         }while(opcao != 13);
-
-
-
-
-
-
-
-
-
 
     }
 
