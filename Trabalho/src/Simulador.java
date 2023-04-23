@@ -5,7 +5,7 @@ public class Simulador {
     private static int qtidVeiculos = 0;
 
     public void incluirVeiculo(){
-        this.setQtidVeiculos(1);// adiciona 1 no set
+        this.setQtidVeiculos(this.getQtidVeiculos() + 1);// adiciona 1 no set
         this.getVeiculos()[qtidVeiculos] = new Veiculo(); // inicializa um veiculo no espaço do do vetor
     }
 
@@ -22,15 +22,20 @@ public class Simulador {
     }
 
     public void mover(int id){
-
+        this.getVeiculos()[id].mover();
     }
 
     public void moverTodos(){
+        for(int i=0;i<this.getVeiculos().length;i++){
+            this.getVeiculos()[i].mover();
+        }
 
     }
 
     public void imprimirPista(){
-
+        for(int i =0;i<this.getVeiculos().length;i++){
+            System.out.println(this.getVeiculos()[i].getDesenho());
+        }
     }
 
     public String toString(){
@@ -48,7 +53,7 @@ public class Simulador {
         if(Simulador.getQtidVeiculos()>=20){
             System.out.println("Impossivel completar operacao, o vetor esta cheio");
         }else{
-            Simulador.qtidVeiculos += qtidVeiculos;  // += para acionar o espaco e nao mudar, assim progredindo pelo vetor (tem que ter tratamento para o limite de veiculos)
+            Simulador.qtidVeiculos = qtidVeiculos;
         }
     }
 

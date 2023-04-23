@@ -4,8 +4,8 @@ public class Veiculo {
     private static int id = 0; // variavel statica pra poder aumentar +1 no ID toda vez q criar um obj novo
     private String[] desenho;
     private int distanciaPercorrida;
-    private Roda[] rodas;
-    private int quantidadeRodas;
+    private final int quantidadeRodas = 4;
+    private Roda[] rodas = new Roda[getQuantidadeRodas()];
     private boolean ipva;
     private double combustivel;
 
@@ -14,7 +14,6 @@ public class Veiculo {
 
         this.setId(this.nextId()); //gera o prox ID
         this.setDistanciaPercorrida(0);
-        this.setQuantidadeRodas(4);
         this.setIpva(rd.nextBoolean()); // gerar ipva aleatorio
         this.setRodas();
         this.setCombustivel(2.5); // combustivel base tem q ser 2.5
@@ -61,37 +60,30 @@ public class Veiculo {
         this.distanciaPercorrida = distanciaPercorrida;
     }
 
-    public Roda[] getRodas(){
+    public Roda[] getRodas() {
         return rodas;
     }
 
-    public void setRodas(){  // mudei o 4 pela variavel qntRodas pq se nao nao faz sentido ter a variavel
-        for(int i=0;i<this.getQuantidadeRodas();i++){
-            this.rodas[i] = new Roda();
-        }
-    }
 
-    public int getQuantidadeRodas(){
+
+    public int getQuantidadeRodas() {
         return this.quantidadeRodas;
     }
 
-    public void setQuantidadeRodas(int quantidadeRodas){
-        this.quantidadeRodas = quantidadeRodas;
-    }
 
     public boolean isIpva(){
         return ipva;
     }
 
-    public void setIpva(boolean ipva){
+    public void setIpva(boolean ipva) {
         this.ipva = ipva;
     }
 
-    public double getCombustivel(){
+    public double getCombustivel() {
         return combustivel;
     }
 
-    public void setCombustivel(double combustivel){
+    public void setCombustivel(double combustivel) {
         this.combustivel = combustivel;
     }
     public String[] getDesenho() {
@@ -102,5 +94,11 @@ public class Veiculo {
         this.desenho[1] = " __/  |_ \\_\n";
         this.desenho[2] = "|  _     _``-.\n";
         this.desenho[3] = "'-(_)---(_)--'\n\n\n";
+    }
+
+    public void setRodas(){
+        for(int i=0;i<this.getQuantidadeRodas();i++){
+            this.rodas[i] = new Roda();
+        }
     }
 }
