@@ -2,7 +2,7 @@ import java.util.Random;
 
 public class Veiculo {
     private static int id = 0; // variavel statica pra poder aumentar +1 no ID toda vez q criar um obj novo
-    private String[] desenho;
+    private String[] desenho = new String[4];
     private int distanciaPercorrida;
     private final int quantidadeRodas = 4;
     private Roda[] rodas = new Roda[getQuantidadeRodas()];
@@ -34,6 +34,12 @@ public class Veiculo {
             return desenho;
         }else
             return desenho;
+    }
+
+    public void geraDesenho() {
+        for(int i=0;i<4;i++){
+            System.out.println(this.getDesenho()[i]);
+        }
     }
     public String toString(){
         return ("Id: "+this.getId()+"\nQuantidade de rodas: "+this.getQuantidadeRodas()+

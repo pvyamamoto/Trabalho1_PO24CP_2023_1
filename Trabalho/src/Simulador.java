@@ -1,12 +1,23 @@
 
 public class Simulador {
 
-    private Veiculo[] veiculos;
-    private static int qtidVeiculos = 0;
+    private Veiculo[] veiculos = new Veiculo[this.maxVeiculos];
+    private static int qtidVeiculos;
+
+    private final int maxVeiculos = 20;
+
+    public Simulador(){
+        this.setQtidVeiculos(0);
+    }
 
     public void incluirVeiculo(){
         this.setQtidVeiculos(this.getQtidVeiculos() + 1);// adiciona 1 no set
-        this.getVeiculos()[qtidVeiculos] = new Veiculo(); // inicializa um veiculo no espaço do do vetor
+        this.getVeiculos()[this.getQtidVeiculos() ] = new Veiculo(); // inicializa um veiculo no espaço do do vetor
+    }
+
+
+    public void pagaIPVA(int id){
+        this.getVeiculos()[id].setIpva(true);
     }
 
     public void removerVeiculo(int id){
@@ -33,8 +44,8 @@ public class Simulador {
     }
 
     public void imprimirPista(){
-        for(int i =0;i<this.getVeiculos().length;i++){
-            System.out.println(this.getVeiculos()[i].getDesenho());
+        for(int i =0;i<this.getQtidVeiculos();i++){
+            this.getVeiculos()[i+1].geraDesenho();
         }
     }
 
