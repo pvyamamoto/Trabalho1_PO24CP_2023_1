@@ -37,7 +37,7 @@ public class UsaSimulador {
                         simulador.incluirVeiculo();
                         System.out.println("O veiculo " + simulador.getVeiculos()[Simulador.getQtidVeiculos() - 1].getId() + " foi adicionado");
                     }else{
-                        System.out.println("Quantidade maxima de veiculos atingida");
+                        System.out.println("Quantidade maxima de veiculos atingida!");
                     }
                     break;
                 case 2:

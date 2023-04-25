@@ -19,7 +19,7 @@ public class Veiculo {
         this.setDesenho(inicializaDesenho()); // desenho do carro
     }
     public boolean mover(){
-        if((this.getCombustivel() > 0) && (this.isIpva())){
+        if((this.getCombustivel() >= 0.55) && (this.isIpva())){
             for(int i = 0; i<this.getQuantidadeRodas(); i++){
                 if(!this.getRodas()[i].isCalibragemPneu()) {
                     return false;
