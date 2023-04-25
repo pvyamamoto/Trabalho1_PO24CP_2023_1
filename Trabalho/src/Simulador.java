@@ -3,19 +3,22 @@ public class Simulador {
 
     private Veiculo[] veiculos = new Veiculo[this.maxVeiculos];
     private static int qtidVeiculos;
-
+    private int id = 0;
     private final int maxVeiculos = 20;
 
     public Simulador(){
         this.setQtidVeiculos(0);
     }
 
+    public int nextId(){
+        return id+=1;
+    }
+
     public void incluirVeiculo(){
-        Veiculo v = new Veiculo();
+        Veiculo v = new Veiculo(nextId());
         this.setVeiculos(v); // inicializa um veiculo no espaço do do vetor
         Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() + 1);// adiciona 1 no set
     }
-
 
     public void pagaIPVA(int id){
         this.getVeiculos()[id].setIpva(true);

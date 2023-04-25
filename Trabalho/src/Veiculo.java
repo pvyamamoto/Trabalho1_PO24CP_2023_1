@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Veiculo {
-    private static int id = 0; // variavel statica pra poder aumentar +1 no ID toda vez q criar um obj novo
+    private int id = 0; // variavel statica pra poder aumentar +1 no ID toda vez q criar um obj novo
     private String[] desenho = new String[4];
     private int distanciaPercorrida;
     private final int quantidadeRodas = 4;
@@ -9,10 +9,10 @@ public class Veiculo {
     private boolean ipva;
     private double combustivel;
 
-    public Veiculo(){
+    public Veiculo(int id){
         Random rd = new Random(); // gerar ipva aleatorio
 
-        this.setId(this.nextId()); //gera o prox ID
+        this.setId(id); //gera o prox ID
         this.setDistanciaPercorrida(0);
         this.setIpva(rd.nextBoolean()); // gerar ipva aleatorio
         this.setRodas();
@@ -45,12 +45,19 @@ public class Veiculo {
         }
     }
     public String toString(){
-        return ("Id: "+this.getId()+"\nQuantidade de rodas: "+this.getQuantidadeRodas()+
-                ((this.isIpva()) ? "\nIpva esta pago" : "\nIpva nao esta pago")+"\nCombustivel no tanque: "
-                +this.getCombustivel()+"L"+ "\nDistancia percorrida: "+this.distanciaPercorrida+" blocos");
-    }
-    public int nextId(){
-         return id+=1;
+        String aux;
+        aux = "Id: "+this.getId()+"\nQuantidade de rodas: "+this.getQuantidadeRodas()+"\n";
+        for(int i = 0; i<this.getQuantidadeRodas(); i++){
+            aux += "Roda "+(i+1)+": "+this.rodas[i].toString()+"\n";
+        }
+        if(this.isIpva())
+            aux += "Ipva esta pago";
+        else
+            aux += "Ipva nao esta pago";
+
+        aux += "\nCombustivel no tanque: " +this.getCombustivel()+"L"+ "\nDistancia percorrida: "+this.distanciaPercorrida+" blocos\n";
+
+        return aux;
     }
 
     public int getId(){
@@ -58,7 +65,7 @@ public class Veiculo {
     }
 
     public void setId(int id){
-        Veiculo.id = id;
+        this.id = id;
     }
 
     public int getDistanciaPercorrida(){
@@ -77,7 +84,6 @@ public class Veiculo {
         return this.quantidadeRodas;
     }
 
-
     public boolean isIpva(){
         return ipva;
     }
@@ -93,12 +99,15 @@ public class Veiculo {
     public void setCombustivel(double combustivel) {
         this.combustivel = combustivel;
     }
+
     public String[] getDesenho() {
         return desenho;
     }
+
     public void setDesenho(String[] desenho){
         this.desenho = desenho;
     }
+
     public String[] inicializaDesenho(){
         String[] desenho = new String[4];
 
