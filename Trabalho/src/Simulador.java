@@ -7,7 +7,7 @@ public class Simulador {
     private final int maxVeiculos = 20;
 
     public Simulador(){
-        this.setQtidVeiculos(0);
+        Simulador.setQtidVeiculos(0);
     }
 
     public int nextId(){
@@ -35,7 +35,7 @@ public class Simulador {
             System.out.println("Veiculo inexistente!");
         }else{
             this.getVeiculos()[id-1] = null;
-            for(int i = id-1; i<this.getQtidVeiculos(); i++)
+            for(int i = id-1; i<Simulador.getQtidVeiculos(); i++)
                 this.setVeiculo(this.getVeiculos()[i+1],i);
             Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() - 1);
         }
