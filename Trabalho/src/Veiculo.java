@@ -17,28 +17,31 @@ public class Veiculo {
         this.setIpva(rd.nextBoolean()); // gerar ipva aleatorio
         this.setRodas();
         this.setCombustivel(2.5); // combustivel base tem q ser 2.5
-        this.setDesenho(); // desenho do carro
+        this.setDesenho(inicializaDesenho()); // desenho do carro
     }
-    public String[] mover(){
+    public boolean mover(){
         if((this.getCombustivel() > 0) && (this.isIpva())){
             for(int i = 0; i<this.getQuantidadeRodas(); i++){
-                if(!this.getRodas()[i].isCalibragemPneu())
-                    return desenho;
+                if(!this.getRodas()[i].isCalibragemPneu()) {
+                    return false;
+                }
             }
+            String[] desenhoAux = getDesenho();
             for(int i = 0; i<this.desenho.length; i++){
-                this.desenho[i] = "     "+this.desenho[i];
+                desenhoAux[i] = "     "+desenhoAux[i];
             }
             this.setCombustivel(this.getCombustivel() - 0.55);
             this.setDistanciaPercorrida(this.getDistanciaPercorrida() + 5);
 
-            return desenho;
+            this.setDesenho(desenhoAux);
+            return true;
         }else
-            return desenho;
+            return false;
     }
 
     public void geraDesenho() {
         for(int i=0;i<4;i++){
-            System.out.println(this.getDesenho()[i]);
+            System.out.print(this.getDesenho()[i]);
         }
     }
     public String toString(){
@@ -70,8 +73,6 @@ public class Veiculo {
         return rodas;
     }
 
-
-
     public int getQuantidadeRodas() {
         return this.quantidadeRodas;
     }
@@ -95,11 +96,18 @@ public class Veiculo {
     public String[] getDesenho() {
         return desenho;
     }
-    public void setDesenho(){
-        this.desenho[0] = "    ____\n";
-        this.desenho[1] = " __/  |_ \\_\n";
-        this.desenho[2] = "|  _     _``-.\n";
-        this.desenho[3] = "'-(_)---(_)--'\n\n\n";
+    public void setDesenho(String[] desenho){
+        this.desenho = desenho;
+    }
+    public String[] inicializaDesenho(){
+        String[] desenho = new String[4];
+
+        desenho[0] = "    ____\n";
+        desenho[1] = " __/  |_ \\_\n";
+        desenho[2] = "|  _     _``-.\n";
+        desenho[3] = "'-(_)---(_)--'\n\n\n";
+
+        return desenho;
     }
 
     public void setRodas(){
