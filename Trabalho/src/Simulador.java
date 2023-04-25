@@ -20,6 +20,12 @@ public class Simulador {
         this.getVeiculos()[id].setIpva(true);
     }
 
+    public void pagaTodosIPVA(){
+        for(int i =0;i<this.getQtidVeiculos();i++){
+            this.getVeiculos()[i].setIpva(true);
+        }
+    }
+
     public void removerVeiculo(int id){
         if(this.getVeiculos()[id] == null){
             System.out.println("Veiculo inexistente!");
