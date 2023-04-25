@@ -49,10 +49,10 @@ public class UsaSimulador {
                 case 3:
                     System.out.println("Informe o id do veiculo que voce deseja abastecer:");
                     auxId = teclado.nextInt();
-                    System.out.println("Informe quanto de gasolina gostaria de colocar:");
+                    System.out.println("Informe quanto de combustivel gostaria de colocar:");
                     double auxD = teclado.nextDouble();
                     simulador.abastecer(auxId,auxD);
-                    System.out.println("O veiculo com o id: "+auxId+" esta com "+simulador.getVeiculos()[auxId].getCombustivel()+" de gasolina no tanque");
+                    System.out.println("O veiculo com o id: "+auxId+" esta com "+simulador.getVeiculos()[auxId].getCombustivel()+" de combustivel no tanque");
                     break;
                 case 4:
                     System.out.println("informe o id do veiculo que voce deseja pagar o ipva:");
