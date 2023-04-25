@@ -60,8 +60,6 @@ public class Simulador {
         return "ebaaa";
     }
 
-
-
     public static int getQtidVeiculos() {
         return Simulador.qtidVeiculos;
     }
@@ -74,7 +72,6 @@ public class Simulador {
             Simulador.qtidVeiculos = qtidVeiculos;
         }
     }
-
 
     public Veiculo[] getVeiculos(){
         return veiculos;
