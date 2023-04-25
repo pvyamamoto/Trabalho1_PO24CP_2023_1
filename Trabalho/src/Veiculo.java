@@ -26,7 +26,7 @@ public class Veiculo {
                     return false;
                 }
             }
-            String[] desenhoAux = getDesenho();
+            String[] desenhoAux = this.getDesenho();
             for(int i = 0; i<this.desenho.length; i++){
                 desenhoAux[i] = "     "+desenhoAux[i];
             }

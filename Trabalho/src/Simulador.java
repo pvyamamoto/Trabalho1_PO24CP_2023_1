@@ -22,7 +22,7 @@ public class Simulador {
     }
 
     public void pagaTodosIPVA(){
-        for(int i =0;i<this.getQtidVeiculos();i++){
+        for(int i =0;i<Simulador.getQtidVeiculos();i++){
             this.getVeiculos()[i].setIpva(true);
         }
     }
@@ -40,18 +40,18 @@ public class Simulador {
     }
 
     public void mover(int id){
-        this.getVeiculos()[id].mover();
+        this.getVeiculo(id).mover();
     }
 
     public void moverTodos(){
-        for(int i=0;i<this.getVeiculos().length;i++){
-            this.getVeiculos()[i].mover();
+        for(int i=0;i<Simulador.getQtidVeiculos(); i++){
+            this.getVeiculo(i).mover();
         }
 
     }
 
     public void imprimirPista(){
-        for(int i = 0;i<this.getQtidVeiculos();i++){
+        for(int i = 0;i<Simulador.getQtidVeiculos();i++){
             this.getVeiculos()[i].geraDesenho();
         }
     }
@@ -76,8 +76,12 @@ public class Simulador {
     }
 
 
-    public Veiculo[] getVeiculos() {
+    public Veiculo[] getVeiculos(){
         return veiculos;
+    }
+
+    public Veiculo getVeiculo(int id){
+        return veiculos[id];
     }
 
     public void setVeiculos(Veiculo veiculo) {
