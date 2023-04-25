@@ -33,14 +33,13 @@ public class UsaSimulador {
 
             switch(opcao){
                 case 1:
-                    if(simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
+                    if(Simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
                         simulador.incluirVeiculo();
-                        System.out.println("O veiculo " + simulador.getVeiculos()[simulador.getQtidVeiculos() - 1].getId() + " foi adicionado");
-                        break;
+                        System.out.println("O veiculo " + simulador.getVeiculos()[Simulador.getQtidVeiculos() - 1].getId() + " foi adicionado");
                     }else{
                         System.out.println("Quantidade maxima de veiculos atingida");
-                        break;
                     }
+                    break;
                 case 2:
                     System.out.println("Informe o id do veiculo que voce deseja remover:");
                     auxId = teclado.nextInt();
@@ -82,7 +81,7 @@ public class UsaSimulador {
                     break;
                 case 9:
                     System.out.println("Os carros sao os seguintes:\n");
-                    for(int i=0;i<simulador.getQtidVeiculos();i++){
+                    for(int i = 0; i< Simulador.getQtidVeiculos(); i++){
                         System.out.println(simulador.getVeiculos()[i].toString());
                     }
                     break;
@@ -103,7 +102,7 @@ public class UsaSimulador {
                     System.out.println("Todos os pneus do carro "+auxId+" foram calibrados");
                     break;
                 case 12:
-                    for(int i=0; i<simulador.getQtidVeiculos(); i++)
+                    for(int i = 0; i< Simulador.getQtidVeiculos(); i++)
                         for(int j=0; j<simulador.getVeiculos()[i].getQuantidadeRodas(); j++){
                             simulador.getVeiculos()[i].getRodas()[j].setCalibragemPneu(true);
                         }
