@@ -11,8 +11,9 @@ public class Simulador {
     }
 
     public void incluirVeiculo(){
-        this.setQtidVeiculos(this.getQtidVeiculos() + 1);// adiciona 1 no set
-        this.getVeiculos()[this.getQtidVeiculos() ] = new Veiculo(); // inicializa um veiculo no espaço do do vetor
+        Veiculo v = new Veiculo();
+        this.setVeiculos(v); // inicializa um veiculo no espaço do do vetor
+        Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() + 1);// adiciona 1 no set
     }
 
 
@@ -62,7 +63,7 @@ public class Simulador {
 
 
     public static int getQtidVeiculos() {
-        return qtidVeiculos;
+        return Simulador.qtidVeiculos;
     }
 
     public static void setQtidVeiculos(int qtidVeiculos) {
@@ -79,7 +80,7 @@ public class Simulador {
         return veiculos;
     }
 
-    public void setVeiculos(Veiculo[] veiculos) {
-        this.veiculos = veiculos;
+    public void setVeiculos(Veiculo veiculo) {
+        this.veiculos[Simulador.getQtidVeiculos()] = veiculo;
     }
 }

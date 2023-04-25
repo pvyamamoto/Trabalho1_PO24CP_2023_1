@@ -33,7 +33,7 @@ public class UsaSimulador {
             switch(opcao){
                 case 1:
                     simulador.incluirVeiculo();
-                    System.out.println("O veiculo "+simulador.getVeiculos()[simulador.getQtidVeiculos()].getId()+" foi adicionado");
+                    System.out.println("O veiculo "+simulador.getVeiculos()[simulador.getQtidVeiculos()-1].getId()+" foi adicionado");
                     break;
                 case 2:
                     System.out.println("Informe o id do veiculo que voce deseja remover:");
