@@ -51,8 +51,8 @@ public class Simulador {
     }
 
     public void imprimirPista(){
-        for(int i =0;i<this.getQtidVeiculos();i++){
-            this.getVeiculos()[i+1].geraDesenho();
+        for(int i = 0;i<this.getQtidVeiculos();i++){
+            this.getVeiculos()[i].geraDesenho();
         }
     }
 
