@@ -1,7 +1,7 @@
 
 public class Simulador {
 
-    private Veiculo[] veiculos = new Veiculo[this.maxVeiculos];
+    private Veiculo[] veiculos = new Veiculo[this.getMaxVeiculos()];
     private static int qtidVeiculos;
     private int id = 0;
     private final int maxVeiculos = 20;
@@ -16,7 +16,7 @@ public class Simulador {
 
     public void incluirVeiculo(){
         Veiculo v = new Veiculo(nextId());
-        this.setVeiculos(v); // inicializa um veiculo no espaço do do vetor
+        this.setVeiculo(v, Simulador.getQtidVeiculos()); // inicializa um veiculo no espaço do do vetor
         Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() + 1);// adiciona 1 no set
     }
 
@@ -31,10 +31,13 @@ public class Simulador {
     }
 
     public void removerVeiculo(int id){
-        if(this.getVeiculos()[id] == null){
+        if(this.getVeiculos()[id-1] == null){
             System.out.println("Veiculo inexistente!");
         }else{
-            this.getVeiculos()[id] = null;
+            this.getVeiculos()[id-1] = null;
+            for(int i = id-1; i<this.getQtidVeiculos(); i++)
+                this.setVeiculo(this.getVeiculos()[i+1],i);
+            Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() - 1);
         }
     }
 
@@ -68,7 +71,6 @@ public class Simulador {
     }
 
     public static void setQtidVeiculos(int qtidVeiculos) {
-
         if(Simulador.getQtidVeiculos()>=20){
             System.out.println("Impossivel completar operacao, o vetor esta cheio");
         }else{
@@ -79,7 +81,14 @@ public class Simulador {
     public Veiculo[] getVeiculos(){
         return veiculos;
     }
-    public void setVeiculos(Veiculo veiculo) {
-        this.veiculos[Simulador.getQtidVeiculos()] = veiculo;
+    public void setVeiculos(Veiculo[] veiculos){
+        this.veiculos = veiculos;
+    }
+    public void setVeiculo(Veiculo veiculo, int pos){
+        this.veiculos[pos] = veiculo;
+    }
+
+    public int getMaxVeiculos(){
+        return maxVeiculos;
     }
 }

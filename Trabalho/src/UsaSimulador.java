@@ -33,9 +33,14 @@ public class UsaSimulador {
 
             switch(opcao){
                 case 1:
-                    simulador.incluirVeiculo();
-                    System.out.println("O veiculo "+simulador.getVeiculos()[simulador.getQtidVeiculos()-1].getId()+" foi adicionado");
-                    break;
+                    if(simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
+                        simulador.incluirVeiculo();
+                        System.out.println("O veiculo " + simulador.getVeiculos()[simulador.getQtidVeiculos() - 1].getId() + " foi adicionado");
+                        break;
+                    }else{
+                        System.out.println("Quantidade maxima de veiculos atingida");
+                        break;
+                    }
                 case 2:
                     System.out.println("Informe o id do veiculo que voce deseja remover:");
                     auxId = teclado.nextInt();
@@ -76,7 +81,7 @@ public class UsaSimulador {
                     System.out.println(simulador.getVeiculos()[auxId].toString());
                     break;
                 case 9:
-                    System.out.println("Os carros sao os seguintes:");
+                    System.out.println("Os carros sao os seguintes:\n");
                     for(int i=0;i<simulador.getQtidVeiculos();i++){
                         System.out.println(simulador.getVeiculos()[i].toString());
                     }

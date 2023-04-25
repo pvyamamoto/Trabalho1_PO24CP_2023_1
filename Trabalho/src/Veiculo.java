@@ -8,7 +8,6 @@ public class Veiculo {
     private Roda[] rodas = new Roda[getQuantidadeRodas()];
     private boolean ipva;
     private double combustivel;
-
     public Veiculo(int id){
         Random rd = new Random(); // gerar ipva aleatorio
 
