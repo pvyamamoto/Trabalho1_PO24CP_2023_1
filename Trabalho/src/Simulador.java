@@ -40,12 +40,12 @@ public class Simulador {
     }
 
     public void mover(int id){
-        this.getVeiculo(id).mover();
+        this.getVeiculos()[id].mover();
     }
 
     public void moverTodos(){
         for(int i=0;i<Simulador.getQtidVeiculos(); i++){
-            this.getVeiculo(i).mover();
+            this.getVeiculos()[i].mover();
         }
 
     }
@@ -79,11 +79,6 @@ public class Simulador {
     public Veiculo[] getVeiculos(){
         return veiculos;
     }
-
-    public Veiculo getVeiculo(int id){
-        return veiculos[id];
-    }
-
     public void setVeiculos(Veiculo veiculo) {
         this.veiculos[Simulador.getQtidVeiculos()] = veiculo;
     }

@@ -24,10 +24,11 @@ public class UsaSimulador {
             System.out.println("9 - Imprimir Dados de todos os Veiculos");
             System.out.println("10 - Calibrar Pneu Especifico");
             System.out.println("11 - Calibrar Todos os Pneus de um Carro");
-            System.out.println("12 - Imprimir Pista de Corrida");
-            System.out.println("13 - Gravar Veiculos em um Arquivo");
-            System.out.println("14 - Ler Veiculos de um Arquivo");
-            System.out.println("15 - Sair da Aplicacao");
+            System.out.println("12 - Calibrar Todos os Pneus de Todos os Carros");
+            System.out.println("13 - Imprimir Pista de Corrida");
+            System.out.println("14 - Gravar Veiculos em um Arquivo");
+            System.out.println("15 - Ler Veiculos de um Arquivo");
+            System.out.println("16 - Sair da Aplicacao");
             opcao = teclado.nextInt();
 
             switch(opcao){
@@ -76,7 +77,7 @@ public class UsaSimulador {
                     break;
                 case 9:
                     System.out.println("Os carros sao os seguintes:");
-                    for(int i=0;i<simulador.getVeiculos().length;i++){
+                    for(int i=0;i<simulador.getQtidVeiculos();i++){
                         System.out.println(simulador.getVeiculos()[i].toString());
                     }
                     break;
@@ -91,27 +92,33 @@ public class UsaSimulador {
                 case 11:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar os pneus:");
                     auxId = teclado.nextInt();
-                    for(int i=0;i<simulador.getVeiculos()[auxId].getRodas().length;i++){
+                    for(int i=0;i<simulador.getVeiculos()[auxId].getQuantidadeRodas();i++){
                         simulador.getVeiculos()[auxId].getRodas()[i].setCalibragemPneu(true);
                     }
                     System.out.println("Todos os pneus do carro "+auxId+" foram calibrados");
                     break;
                 case 12:
+                    for(int i=0; i<simulador.getQtidVeiculos(); i++)
+                        for(int j=0; j<simulador.getVeiculos()[i].getQuantidadeRodas(); j++){
+                            simulador.getVeiculos()[i].getRodas()[j].setCalibragemPneu(true);
+                        }
+                    System.out.println("Todos os pneus de todos os carros foram calibrados");
+                case 13:
                     simulador.imprimirPista();
                     break;
-                case 13:
+                case 14:
                     System.out.println("Os veiculos foram Gravados");
                     break;
-                case 14:
+                case 15:
                     System.out.println("Informe o arquivo que será lido");
                     break;
-                case 15:
+                case 16:
                     System.out.println("Voce saiu da aplicacao ");
                     break;
                 default:
                     System.out.println("Opcao invalida. Tente Novamente");
             }
-        }while(opcao != 15);
+        }while(opcao != 16);
 
     }
 
