@@ -72,6 +72,8 @@ public class Simulador {
             pista += "Veiculo "+this.getVeiculos()[i].getId()+":";
             pista += this.getVeiculos()[i].geraDesenho();
         }
+
+        return pista;
     }
 
     public String toString(){
