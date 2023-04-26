@@ -1,7 +1,7 @@
 import java.util.Random;
 
 public class Veiculo {
-    private int id = 0; // variavel statica pra poder aumentar +1 no ID toda vez q criar um obj novo
+    private int id = 0;
     private String[] desenho = new String[4];
     private int distanciaPercorrida;
     private final int quantidadeRodas = 4;

@@ -2,7 +2,7 @@
 public class Simulador {
 
     private Veiculo[] veiculos = new Veiculo[this.getMaxVeiculos()];
-    private static int qtidVeiculos;
+    private static int qtidVeiculos = 0;
     private int id = 0;
     private final int maxVeiculos = 20;
 
@@ -31,13 +31,15 @@ public class Simulador {
     }
 
     public void removerVeiculo(int id){
-        if(this.getVeiculos()[this.getVeiculoPos(id)] == null){
+        if(id == -1){
             System.out.println("Veiculo inexistente!");
         }else{
-            this.getVeiculos()[this.getVeiculoPos(id)] = null;
-            for(int i = id-1; i<Simulador.getQtidVeiculos(); i++)
+            this.getVeiculos()[id] = null;
+            for(int i = id; i<Simulador.getQtidVeiculos()-1; i++)
                 this.setVeiculo(this.getVeiculos()[i+1],i);
             Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() - 1);
+
+            System.out.println("Veiculo removido!");
         }
     }
 
@@ -58,7 +60,17 @@ public class Simulador {
 
     public void imprimirPista(){
         for(int i = 0;i<Simulador.getQtidVeiculos();i++){
+            System.out.println("Veiculo "+this.getVeiculos()[i].getId()+":");
             this.getVeiculos()[i].geraDesenho();
+        }
+    }
+
+    public String getPista(){
+        String pista;
+
+        for(int i = 0;i<Simulador.getQtidVeiculos();i++){
+            pista += "Veiculo "+this.getVeiculos()[i].getId()+":";
+            pista += this.getVeiculos()[i].geraDesenho();
         }
     }
 
@@ -94,9 +106,10 @@ public class Simulador {
 
     public int getVeiculoPos(int id){
         for(int i = 0; i<Simulador.getQtidVeiculos(); i++) {
-            if (getVeiculos()[i].getId() == id)
+            if(getVeiculos()[i].getId() == id)
                 return i;
-        }else
-            return -1;
+        }
+
+        return -1;
     }
 }

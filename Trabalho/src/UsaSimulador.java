@@ -1,5 +1,5 @@
-
 import java.util.Scanner;
+import java.io.File;
 
 public class UsaSimulador {
     public static void main(String[] args) {
@@ -43,8 +43,7 @@ public class UsaSimulador {
                 case 2:
                     System.out.println("Informe o id do veiculo que voce deseja remover:");
                     auxId = teclado.nextInt();
-                    simulador.removerVeiculo(auxId);
-                    System.out.println("O veiculo com o id: "+auxId+" foi removido");
+                    simulador.removerVeiculo(simulador.getVeiculoPos(auxId));
                     break;
                 case 3:
                     System.out.println("Informe o id do veiculo que voce deseja abastecer:");
@@ -81,7 +80,7 @@ public class UsaSimulador {
                     break;
                 case 9:
                     System.out.println("Os carros sao os seguintes:\n");
-                    for(int i = 0; i< Simulador.getQtidVeiculos(); i++){
+                    for(int i = 0; i < Simulador.getQtidVeiculos(); i++){
                         System.out.println(simulador.getVeiculos()[i].toString());
                     }
                     break;
@@ -112,6 +111,12 @@ public class UsaSimulador {
                     simulador.imprimirPista();
                     break;
                 case 14:
+                    File fileVeiculos = new File("/Desktop/veiculos.txt");
+                    try{
+                        if(!fileVeiculos.exists()){
+                            fileVeiculos.createNewFile();
+                        }
+                    }
                     System.out.println("Os veiculos foram Gravados");
                     break;
                 case 15:
