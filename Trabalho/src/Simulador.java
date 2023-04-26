@@ -21,7 +21,7 @@ public class Simulador {
     }
 
     public void pagaIPVA(int id){
-        this.getVeiculos()[id].setIpva(true);
+        this.getVeiculos()[this.getVeiculoPos(id)].setIpva(true);
     }
 
     public void pagaTodosIPVA(){
@@ -31,10 +31,10 @@ public class Simulador {
     }
 
     public void removerVeiculo(int id){
-        if(this.getVeiculos()[id-1] == null){
+        if(this.getVeiculos()[this.getVeiculoPos(id)] == null){
             System.out.println("Veiculo inexistente!");
         }else{
-            this.getVeiculos()[id-1] = null;
+            this.getVeiculos()[this.getVeiculoPos(id)] = null;
             for(int i = id-1; i<Simulador.getQtidVeiculos(); i++)
                 this.setVeiculo(this.getVeiculos()[i+1],i);
             Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() - 1);
@@ -42,11 +42,11 @@ public class Simulador {
     }
 
     public void abastecer(int id, double quant){
-        this.getVeiculos()[id].setCombustivel(this.getVeiculos()[id].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
+        this.getVeiculos()[id].setCombustivel(this.getVeiculos()[this.getVeiculoPos(id)].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
     }
 
     public void mover(int id){
-        this.getVeiculos()[id].mover();
+        this.getVeiculos()[this.getVeiculoPos(id)].mover();
     }
 
     public void moverTodos(){
@@ -90,5 +90,13 @@ public class Simulador {
 
     public int getMaxVeiculos(){
         return maxVeiculos;
+    }
+
+    public int getVeiculoPos(int id){
+        for(int i = 0; i<Simulador.getQtidVeiculos(); i++) {
+            if (getVeiculos()[i].getId() == id)
+                return i;
+        }else
+            return -1;
     }
 }
