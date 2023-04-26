@@ -107,6 +107,7 @@ public class UsaSimulador {
                             simulador.getVeiculos()[i].getRodas()[j].setCalibragemPneu(true);
                         }
                     System.out.println("Todos os pneus de todos os carros foram calibrados");
+                    break;
                 case 13:
                     simulador.imprimirPista();
                     break;
