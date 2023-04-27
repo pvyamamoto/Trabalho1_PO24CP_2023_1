@@ -3,7 +3,7 @@ import java.io.Serializable;
 public class Simulador implements Serializable{
 
     private Veiculo[] veiculos = new Veiculo[this.getMaxVeiculos()];
-    private static int qtidVeiculos = 0;
+    private static int qtidVeiculos;
     private int id = 0;
     private final int maxVeiculos = 20;
 
@@ -17,7 +17,7 @@ public class Simulador implements Serializable{
 
     public void incluirVeiculo(){
         Veiculo v = new Veiculo(nextId());
-        this.setVeiculo(v, Simulador.getQtidVeiculos()); // inicializa um veiculo no espaço do do vetor
+        this.setVeiculos(v, Simulador.getQtidVeiculos()); // inicializa um veiculo no espaço do do vetor
         Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() + 1);// adiciona 1 no set
     }
 
@@ -42,7 +42,7 @@ public class Simulador implements Serializable{
         }else{
             this.getVeiculos()[id] = null;
             for(int i = id; i<Simulador.getQtidVeiculos()-1; i++)
-                this.setVeiculo(this.getVeiculos()[i+1],i);
+                this.setVeiculos(this.getVeiculos()[i+1],i);
             Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() - 1);
 
             System.out.println("Veiculo removido!\n");
@@ -106,6 +106,14 @@ public class Simulador implements Serializable{
         return Simulador.qtidVeiculos;
     }
 
+    public int getQtidVeiculosArq(){
+        int qnt = 0;
+        for(int i = 0; (i<this.getMaxVeiculos()) && (this.getVeiculos()[i] == null); i++)
+            qnt++;
+
+        return qnt;
+    }
+
     public static void setQtidVeiculos(int qtidVeiculos) {
         if(Simulador.getQtidVeiculos()>=20){
             System.out.println("Impossivel completar operacao, o vetor esta cheio\n");
@@ -120,7 +128,7 @@ public class Simulador implements Serializable{
     public void setVeiculos(Veiculo[] veiculos){
         this.veiculos = veiculos;
     }
-    public void setVeiculo(Veiculo veiculo, int pos){
+    public void setVeiculos(Veiculo veiculo, int pos){
         this.veiculos[pos] = veiculo;
     }
 
