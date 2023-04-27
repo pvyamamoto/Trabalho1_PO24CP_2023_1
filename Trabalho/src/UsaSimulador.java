@@ -145,7 +145,6 @@ public class UsaSimulador{
                     }catch(Exception ex){
                         System.err.println("erro: "+ex);
                     }
-                    System.out.println("");
                     break;
                 case 16:
                     System.out.println("\nVoce saiu da aplicacao ");
