@@ -95,7 +95,7 @@ public class Simulador implements Serializable{
 
     public String toString(int id){
         if(id == -1){
-            return "Veiculo inexistente! Tente novament\n";
+            return "Veiculo inexistente! Tente novamente\n";
         }else{
             return this.getVeiculos()[id].toString();
         }
@@ -105,15 +105,6 @@ public class Simulador implements Serializable{
     public int getQtidVeiculos() {
         return this.qtidVeiculos;
     }
-
-    public int getQtidVeiculosArq(){
-        int qnt = 0;
-        for(int i = 0; (i<this.getMaxVeiculos()) && (this.getVeiculos()[i] == null); i++)
-            qnt++;
-
-        return qnt;
-    }
-
     public void setQtidVeiculos(int qtidVeiculos) {
         if(this.getQtidVeiculos()>=20){
             System.out.println("Impossivel completar operacao, o vetor esta cheio\n");
