@@ -1,7 +1,5 @@
+import java.io.*;
 import java.util.Scanner;
-import java.io.File;
-import java.io.FileOutputStream;
-import java.io.ObjectOutputStream;
 
 public class UsaSimulador{
     public static void main(String[] args){
@@ -37,9 +35,9 @@ public class UsaSimulador{
                 case 1:
                     if (Simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
                         simulador.incluirVeiculo();
-                        System.out.println("O veiculo " + simulador.getVeiculos()[Simulador.getQtidVeiculos() - 1].getId() + " foi adicionado");
+                        System.out.println("\nO veiculo " + simulador.getVeiculos()[Simulador.getQtidVeiculos() - 1].getId() + " foi adicionado\n");
                     } else {
-                        System.out.println("Quantidade maxima de veiculos atingida!");
+                        System.out.println("\nQuantidade maxima de veiculos atingida!\n");
                     }
                     break;
                 case 2:
@@ -53,27 +51,27 @@ public class UsaSimulador{
                     System.out.println("Informe quanto de combustivel gostaria de colocar:");
                     double auxD = teclado.nextDouble();
                     simulador.abastecer(auxId, auxD);
-                    System.out.println("O veiculo com o id: " + auxId + " esta com " + simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getCombustivel() + " de combustivel no tanque");
+                    System.out.println("\nO veiculo com o id: " + auxId + " esta com " + simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getCombustivel() + " de combustivel no tanque\n");
                     break;
                 case 4:
                     System.out.println("informe o id do veiculo que voce deseja pagar o ipva:");
                     auxId = teclado.nextInt();
                     simulador.pagaIPVA(auxId);
-                    System.out.println("O veiculo com o id: " + auxId + " esta com o IPVA pago!");
+                    System.out.println("\nO veiculo com o id: " + auxId + " esta com o IPVA pago!\n");
                     break;
                 case 5:
                     simulador.pagaTodosIPVA();
-                    System.out.println("Os IPVA de todos os veiculos estao pagos!");
+                    System.out.println("\nOs IPVA de todos os veiculos estao pagos!\n");
                     break;
                 case 6:
                     System.out.println("Informe o id do veiculo que voce deseja movimentar:");
                     auxId = teclado.nextInt();
                     simulador.mover(auxId);
-                    System.out.println("O veiculo com o id: " + auxId + " se moveu");
+                    System.out.println("\nO veiculo com o id: " + auxId + " se moveu\n");
                     break;
                 case 7:
                     simulador.moverTodos();
-                    System.out.println("Todos os veiculos foram movidos!");
+                    System.out.println("\nTodos os veiculos foram movidos!\n");
                     break;
                 case 8:
                     System.out.println("Informe o id do veiculo que voce deseja saber os dados:");
@@ -81,7 +79,7 @@ public class UsaSimulador{
                     System.out.println(simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].toString());
                     break;
                 case 9:
-                    System.out.println("Os carros sao os seguintes:\n");
+                    System.out.println("\nOs carros sao os seguintes:\n");
                     for (int i = 0; i < Simulador.getQtidVeiculos(); i++) {
                         System.out.println(simulador.getVeiculos()[i].toString());
                     }
@@ -92,7 +90,7 @@ public class UsaSimulador{
                     System.out.println("Informe o pneu do carro (1-4):");
                     int pneu = teclado.nextInt();
                     simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getRodas()[pneu].setCalibragemPneu(true);
-                    System.out.println("O pneu " + pneu + ", do carro " + auxId + " esta calibrado!");
+                    System.out.println("\nO pneu " + pneu + ", do carro " + auxId + " esta calibrado!\n");
                     break;
                 case 11:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar os pneus:");
@@ -100,22 +98,25 @@ public class UsaSimulador{
                     for (int i = 0; i < simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getQuantidadeRodas(); i++) {
                         simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getRodas()[i].setCalibragemPneu(true);
                     }
-                    System.out.println("Todos os pneus do carro " + auxId + " foram calibrados");
+                    System.out.println("\nTodos os pneus do carro " + auxId + " foram calibrados\n");
                     break;
                 case 12:
                     for (int i = 0; i < Simulador.getQtidVeiculos(); i++)
                         for (int j = 0; j < simulador.getVeiculos()[i].getQuantidadeRodas(); j++) {
                             simulador.getVeiculos()[i].getRodas()[j].setCalibragemPneu(true);
                         }
-                    System.out.println("Todos os pneus de todos os carros foram calibrados");
+                    System.out.println("\nTodos os pneus de todos os carros foram calibrados\n");
                     break;
                 case 13:
                     simulador.imprimirPista();
                     break;
                 case 14:
-                    File arquivo = new File("sim.dat");
+                    System.out.println("Informe o caminho para salvar o arquivo (formato \"C:\\caminho\\\"):");
+                    String pathOut = teclado.next();
+
+                    File simOut = new File(pathOut+"\\sim.dat");
                     try{
-                        FileOutputStream fout = new FileOutputStream(arquivo);
+                        FileOutputStream fout = new FileOutputStream(simOut);
                         ObjectOutputStream oos = new ObjectOutputStream(fout);
 
                         oos.writeObject(simulador);
@@ -124,16 +125,30 @@ public class UsaSimulador{
                         oos.close();
                         fout.close();
 
-                        System.out.println("Os veiculos foram gravados");
+                        System.out.println("\nOs veiculos foram gravados\n");
                     }catch(Exception ex){
                         System.err.println("erro: "+ ex);
                     }
                     break;
                 case 15:
-                    System.out.println("Informe o arquivo que será lido");
+                    System.out.println("Informe o caminho para ler o arquivo (formato \"C:\\caminho\\\"):");
+                    String pathIn = teclado.next();
+                    File simIn = new File(pathIn);
+                    try{
+                        FileInputStream fin = new FileInputStream(simIn);
+                        ObjectInputStream oin = new ObjectInputStream(fin);
+
+                        simulador = (Simulador) oin.readObject();
+
+                        oin.close();
+                        fin.close();
+                    }catch(Exception ex){
+                        System.err.println("erro: "+ex);
+                    }
+                    System.out.println("");
                     break;
                 case 16:
-                    System.out.println("Voce saiu da aplicacao ");
+                    System.out.println("\nVoce saiu da aplicacao ");
                     break;
                 default:
                     System.out.println("Opcao invalida. Tente Novamente");

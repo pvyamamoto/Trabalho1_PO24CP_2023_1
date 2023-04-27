@@ -33,14 +33,14 @@ public class Simulador implements Serializable{
 
     public void removerVeiculo(int id){
         if(id == -1){
-            System.out.println("Veiculo inexistente!");
+            System.out.println("Veiculo inexistente!\n");
         }else{
             this.getVeiculos()[id] = null;
             for(int i = id; i<Simulador.getQtidVeiculos()-1; i++)
                 this.setVeiculo(this.getVeiculos()[i+1],i);
             Simulador.setQtidVeiculos(Simulador.getQtidVeiculos() - 1);
 
-            System.out.println("Veiculo removido!");
+            System.out.println("Veiculo removido!\n");
         }
     }
 
@@ -86,7 +86,7 @@ public class Simulador implements Serializable{
 
     public static void setQtidVeiculos(int qtidVeiculos) {
         if(Simulador.getQtidVeiculos()>=20){
-            System.out.println("Impossivel completar operacao, o vetor esta cheio");
+            System.out.println("Impossivel completar operacao, o vetor esta cheio\n");
         }else{
             Simulador.qtidVeiculos = qtidVeiculos;
         }
