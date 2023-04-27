@@ -66,13 +66,12 @@ public class Simulador {
     }
 
     public String getPista(){
-        String pista;
+        String pista = null;
 
         for(int i = 0;i<Simulador.getQtidVeiculos();i++){
             pista += "Veiculo "+this.getVeiculos()[i].getId()+":";
-            pista += this.getVeiculos()[i].geraDesenho();
+            pista += this.getVeiculos()[i].getDesenho();
         }
-
         return pista;
     }
 

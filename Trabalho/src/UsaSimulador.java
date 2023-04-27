@@ -1,8 +1,11 @@
 import java.util.Scanner;
 import java.io.File;
+import java.io.FileOutputStream;
+import java.io.ObjectOutputStream;
+import java.io.Serializable;
 
-public class UsaSimulador {
-    public static void main(String[] args) {
+public class UsaSimulador implements Serializable{
+    public static void main(String[] args){
 
         Scanner teclado = new Scanner(System.in);
         int opcao = 0;
@@ -31,12 +34,12 @@ public class UsaSimulador {
             System.out.println("16 - Sair da Aplicacao");
             opcao = teclado.nextInt();
 
-            switch(opcao){
+            switch(opcao) {
                 case 1:
-                    if(Simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
+                    if (Simulador.getQtidVeiculos() < simulador.getMaxVeiculos()) {
                         simulador.incluirVeiculo();
                         System.out.println("O veiculo " + simulador.getVeiculos()[Simulador.getQtidVeiculos() - 1].getId() + " foi adicionado");
-                    }else{
+                    } else {
                         System.out.println("Quantidade maxima de veiculos atingida!");
                     }
                     break;
@@ -50,14 +53,14 @@ public class UsaSimulador {
                     auxId = teclado.nextInt();
                     System.out.println("Informe quanto de combustivel gostaria de colocar:");
                     double auxD = teclado.nextDouble();
-                    simulador.abastecer(auxId,auxD);
-                    System.out.println("O veiculo com o id: "+auxId+" esta com "+simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getCombustivel()+" de combustivel no tanque");
+                    simulador.abastecer(auxId, auxD);
+                    System.out.println("O veiculo com o id: " + auxId + " esta com " + simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getCombustivel() + " de combustivel no tanque");
                     break;
                 case 4:
                     System.out.println("informe o id do veiculo que voce deseja pagar o ipva:");
                     auxId = teclado.nextInt();
                     simulador.pagaIPVA(auxId);
-                    System.out.println("O veiculo com o id: "+auxId+" esta com o IPVA pago!");
+                    System.out.println("O veiculo com o id: " + auxId + " esta com o IPVA pago!");
                     break;
                 case 5:
                     simulador.pagaTodosIPVA();
@@ -67,7 +70,7 @@ public class UsaSimulador {
                     System.out.println("Informe o id do veiculo que voce deseja movimentar:");
                     auxId = teclado.nextInt();
                     simulador.mover(auxId);
-                    System.out.println("O veiculo com o id: "+auxId+" se moveu");
+                    System.out.println("O veiculo com o id: " + auxId + " se moveu");
                     break;
                 case 7:
                     simulador.moverTodos();
@@ -80,7 +83,7 @@ public class UsaSimulador {
                     break;
                 case 9:
                     System.out.println("Os carros sao os seguintes:\n");
-                    for(int i = 0; i < Simulador.getQtidVeiculos(); i++){
+                    for (int i = 0; i < Simulador.getQtidVeiculos(); i++) {
                         System.out.println(simulador.getVeiculos()[i].toString());
                     }
                     break;
@@ -90,19 +93,19 @@ public class UsaSimulador {
                     System.out.println("Informe o pneu do carro (1-4):");
                     int pneu = teclado.nextInt();
                     simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getRodas()[pneu].setCalibragemPneu(true);
-                    System.out.println("O pneu "+pneu+", do carro "+auxId+" esta calibrado!");
+                    System.out.println("O pneu " + pneu + ", do carro " + auxId + " esta calibrado!");
                     break;
                 case 11:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar os pneus:");
                     auxId = teclado.nextInt();
-                    for(int i=0;i<simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getQuantidadeRodas();i++){
+                    for (int i = 0; i < simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getQuantidadeRodas(); i++) {
                         simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getRodas()[i].setCalibragemPneu(true);
                     }
-                    System.out.println("Todos os pneus do carro "+auxId+" foram calibrados");
+                    System.out.println("Todos os pneus do carro " + auxId + " foram calibrados");
                     break;
                 case 12:
-                    for(int i = 0; i< Simulador.getQtidVeiculos(); i++)
-                        for(int j=0; j<simulador.getVeiculos()[i].getQuantidadeRodas(); j++){
+                    for (int i = 0; i < Simulador.getQtidVeiculos(); i++)
+                        for (int j = 0; j < simulador.getVeiculos()[i].getQuantidadeRodas(); j++) {
                             simulador.getVeiculos()[i].getRodas()[j].setCalibragemPneu(true);
                         }
                     System.out.println("Todos os pneus de todos os carros foram calibrados");
@@ -111,13 +114,23 @@ public class UsaSimulador {
                     simulador.imprimirPista();
                     break;
                 case 14:
-                    File fileVeiculos = new File("/Desktop/veiculos.txt");
+                    System.out.println("Informe o caminho do arquivo: ");
+                    String path = teclado.nextLine();
+                    File arquivo = new File(path+"sim.dat");
                     try{
-                        if(!fileVeiculos.exists()){
-                            fileVeiculos.createNewFile();
-                        }
+                        FileOutputStream fout = new FileOutputStream(arquivo);
+                        ObjectOutputStream oos = new ObjectOutputStream(fout);
+
+                        oos.writeObject(simulador);
+
+                        oos.flush();
+                        oos.close();
+                        fout.close();
+
+                        System.out.println("Os veiculos foram Gravados");
+                    }catch(Exception ex){
+                        System.err.println("erro: "+ex.toString());
                     }
-                    System.out.println("Os veiculos foram Gravados");
                     break;
                 case 15:
                     System.out.println("Informe o arquivo que será lido");
