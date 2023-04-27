@@ -2,13 +2,12 @@ import java.util.Scanner;
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.ObjectOutputStream;
-import java.io.Serializable;
 
-public class UsaSimulador implements Serializable{
+public class UsaSimulador{
     public static void main(String[] args){
 
         Scanner teclado = new Scanner(System.in);
-        int opcao = 0;
+        int opcao;
         int auxId;
         Simulador simulador = new Simulador();
 
@@ -114,9 +113,7 @@ public class UsaSimulador implements Serializable{
                     simulador.imprimirPista();
                     break;
                 case 14:
-                    System.out.println("Informe o caminho do arquivo: ");
-                    String path = teclado.nextLine();
-                    File arquivo = new File(path+"sim.dat");
+                    File arquivo = new File("sim.dat");
                     try{
                         FileOutputStream fout = new FileOutputStream(arquivo);
                         ObjectOutputStream oos = new ObjectOutputStream(fout);
@@ -127,9 +124,9 @@ public class UsaSimulador implements Serializable{
                         oos.close();
                         fout.close();
 
-                        System.out.println("Os veiculos foram Gravados");
+                        System.out.println("Os veiculos foram gravados");
                     }catch(Exception ex){
-                        System.err.println("erro: "+ex.toString());
+                        System.err.println("erro: "+ ex);
                     }
                     break;
                 case 15:

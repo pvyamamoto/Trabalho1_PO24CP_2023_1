@@ -1,5 +1,6 @@
+import java.io.Serializable;
 
-public class Simulador {
+public class Simulador implements Serializable{
 
     private Veiculo[] veiculos = new Veiculo[this.getMaxVeiculos()];
     private static int qtidVeiculos = 0;

@@ -1,6 +1,7 @@
+import java.io.Serializable;
 import java.util.Random;
 
-public class Veiculo {
+public class Veiculo implements Serializable{
     private int id = 0;
     private String[] desenho = new String[4];
     private int distanciaPercorrida;
