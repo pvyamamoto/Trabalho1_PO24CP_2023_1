@@ -50,33 +50,30 @@ public class UsaSimulador{
                     auxId = teclado.nextInt();
                     System.out.println("Informe quanto de combustivel gostaria de colocar:");
                     double auxD = teclado.nextDouble();
-                    simulador.abastecer(auxId, auxD);
-                    System.out.println("\nO veiculo com o id: " + auxId + " esta com " + simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getCombustivel() + " de combustivel no tanque\n");
+                    simulador.abastecer(simulador.getVeiculoPos(auxId), auxD);
                     break;
                 case 4:
                     System.out.println("informe o id do veiculo que voce deseja pagar o ipva:");
                     auxId = teclado.nextInt();
                     simulador.pagaIPVA(auxId);
-                    System.out.println("\nO veiculo com o id: " + auxId + " esta com o IPVA pago!\n");
                     break;
                 case 5:
-                    simulador.pagaTodosIPVA();
+                    simulador.pagaIPVA();
                     System.out.println("\nOs IPVA de todos os veiculos estao pagos!\n");
                     break;
                 case 6:
                     System.out.println("Informe o id do veiculo que voce deseja movimentar:");
                     auxId = teclado.nextInt();
-                    simulador.mover(auxId);
-                    System.out.println("\nO veiculo com o id: " + auxId + " se moveu\n");
+                    simulador.mover(simulador.getVeiculoPos(auxId));
                     break;
                 case 7:
-                    simulador.moverTodos();
+                    simulador.mover();
                     System.out.println("\nTodos os veiculos foram movidos!\n");
                     break;
                 case 8:
                     System.out.println("Informe o id do veiculo que voce deseja saber os dados:");
                     auxId = teclado.nextInt();
-                    System.out.println(simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].toString());
+                    System.out.println(simulador.toString(simulador.getVeiculoPos(auxId)));
                     break;
                 case 9:
                     System.out.println("\nOs carros sao os seguintes:\n");

@@ -22,10 +22,15 @@ public class Simulador implements Serializable{
     }
 
     public void pagaIPVA(int id){
-        this.getVeiculos()[this.getVeiculoPos(id)].setIpva(true);
+        if(id == -1){
+            System.out.println("Veiculo inexistente! Tente novamente\n");
+        }else{
+            this.getVeiculos()[this.getVeiculoPos(id)].setIpva(true);
+            System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!\n");
+        }
     }
 
-    public void pagaTodosIPVA(){
+    public void pagaIPVA(){
         for(int i =0;i<Simulador.getQtidVeiculos();i++){
             this.getVeiculos()[i].setIpva(true);
         }
@@ -33,7 +38,7 @@ public class Simulador implements Serializable{
 
     public void removerVeiculo(int id){
         if(id == -1){
-            System.out.println("Veiculo inexistente!\n");
+            System.out.println("Veiculo inexistente! Tente novamente\n");
         }else{
             this.getVeiculos()[id] = null;
             for(int i = id; i<Simulador.getQtidVeiculos()-1; i++)
@@ -45,14 +50,26 @@ public class Simulador implements Serializable{
     }
 
     public void abastecer(int id, double quant){
-        this.getVeiculos()[id].setCombustivel(this.getVeiculos()[this.getVeiculoPos(id)].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
+        if(id == -1){
+            System.out.println("Veiculo inexistente! Tente novamente\n");
+        }else{
+            this.getVeiculos()[id].setCombustivel(this.getVeiculos()[id].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
+            System.out.println("\nO veiculo com o id: " + id + " esta com " + this.getVeiculos()[id].getCombustivel() + " de combustivel no tanque\n");
+
+        }
     }
 
     public void mover(int id){
-        this.getVeiculos()[this.getVeiculoPos(id)].mover();
+        if(id == -1){
+            System.out.println("Veiculo inexistente! Tente novamente\n");
+
+        }else{
+            this.getVeiculos()[id].mover();
+            System.out.println("\nO veiculo com o id: " + id + " se moveu\n");
+        }
     }
 
-    public void moverTodos(){
+    public void mover(){
         for(int i=0;i<Simulador.getQtidVeiculos(); i++){
             this.getVeiculos()[i].mover();
         }
@@ -76,8 +93,13 @@ public class Simulador implements Serializable{
         return pista;
     }
 
-    public String toString(){
-        return "ebaaa";
+    public String toString(int id){
+        if(id == -1){
+            return "Veiculo inexistente! Tente novament\n";
+        }else{
+            return this.getVeiculos()[id].toString();
+        }
+
     }
 
     public static int getQtidVeiculos() {
