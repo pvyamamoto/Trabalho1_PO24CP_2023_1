@@ -103,8 +103,10 @@ public class UsaSimulador{
                     teclado.nextLine();
                     System.out.println("Informe o caminho para salvar o arquivo (formato \"C:\\caminho\\\"):");
                     String pathOut = teclado.nextLine();
+                    System.out.println("Informe o nome do arquivo: ");
+                    String nomeOut = teclado.nextLine();
 
-                    File simOut = new File(pathOut+"\\sim.txt");
+                    File simOut = new File(pathOut+"\\"+nomeOut+".txt");
                     try{
                         FileOutputStream fos = new FileOutputStream(simOut);
                         ObjectOutputStream oos = new ObjectOutputStream(fos);
@@ -124,7 +126,9 @@ public class UsaSimulador{
                     teclado.nextLine();
                     System.out.println("Informe o caminho para ler o arquivo (formato \"C:\\caminho\\\"):");
                     String pathIn = teclado.nextLine();
-                    File simIn = new File(pathIn);
+                    System.out.println("Informe o nome do arquivo: ");
+                    String nomeIn = teclado.nextLine();
+                    File simIn = new File(pathIn+"\\"+nomeIn+".txt");
                     try{
                         FileInputStream fin = new FileInputStream(simIn);
                         ObjectInputStream oin = new ObjectInputStream(fin);
