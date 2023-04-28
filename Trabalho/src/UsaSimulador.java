@@ -86,23 +86,15 @@ public class UsaSimulador{
                     auxId = teclado.nextInt();
                     System.out.println("Informe o pneu do carro (1-4):");
                     int pneu = teclado.nextInt();
-                    simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getRodas()[pneu].setCalibragemPneu(true);
-                    System.out.println("\nO pneu " + pneu + ", do carro " + auxId + " esta calibrado!\n");
+                    simulador.calibraPneu(simulador.getVeiculoPos(auxId),pneu);
                     break;
                 case 11:
                     System.out.println("Informe o id do veiculo que voce deseja calibrar os pneus:");
                     auxId = teclado.nextInt();
-                    for (int i = 0; i < simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getQuantidadeRodas(); i++) {
-                        simulador.getVeiculos()[simulador.getVeiculoPos(auxId)].getRodas()[i].setCalibragemPneu(true);
-                    }
-                    System.out.println("\nTodos os pneus do carro " + auxId + " foram calibrados\n");
+                    simulador.calibraPneu(simulador.getVeiculoPos(auxId));
                     break;
                 case 12:
-                    for (int i = 0; i < simulador.getQtidVeiculos(); i++)
-                        for (int j = 0; j < simulador.getVeiculos()[i].getQuantidadeRodas(); j++) {
-                            simulador.getVeiculos()[i].getRodas()[j].setCalibragemPneu(true);
-                        }
-                    System.out.println("\nTodos os pneus de todos os carros foram calibrados\n");
+                    simulador.calibraPneu();
                     break;
                 case 13:
                     simulador.imprimirPista();

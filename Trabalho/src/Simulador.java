@@ -21,12 +21,49 @@ public class Simulador implements Serializable{
         this.setQtidVeiculos(this.getQtidVeiculos() + 1);// adiciona 1 no set
     }
 
+
+    public void calibraPneu(int idC,int idP){
+        if(idC == -1){
+            System.out.println("Veiculo inexistente! Tente novamente\n");
+        }else if(idP != 1 && idP != 2 && idP != 3 && idP != 4 ){
+            System.out.println("Pneu Inexistente! Tente novamente\n");
+        }else{
+            this.getVeiculos()[idC].getRodas()[idP - 1].setCalibragemPneu(true);
+            System.out.println("O pneu " + idP + ", do carro " + (idC+1) + " esta calibrado!");
+        }
+    }
+
+    public void calibraPneu(int id){
+        if(id == -1){
+            System.out.println("Veiculo inexistente! Tente novamente\n");
+        }else{
+            for (int i = 1; i <= this.getVeiculos()[id].getQuantidadeRodas(); i++) {
+                if(!this.getVeiculos()[id].getRodas()[i-1].isCalibragemPneu()) {
+                    this.calibraPneu(id, i);
+                }
+            }
+            System.out.println("Todos os pneus do carro " + (id+1) + " foram calibrados\n");
+        }
+    }
+
+
+    public void calibraPneu() {
+        for (int i = 0; i < this.getQtidVeiculos(); i++) {
+            for (int j = 1; j <= this.getVeiculos()[i].getQuantidadeRodas(); j++) {
+                if(!this.getVeiculos()[i].getRodas()[j-1].isCalibragemPneu()){
+                    this.calibraPneu(i, j);
+                }
+            }
+        }
+        System.out.println("\nTodos os pneus de todos os carros foram calibrados\n");
+    }
+
     public void pagaIPVA(int id){
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
         }else{
             this.getVeiculos()[this.getVeiculoPos(id)].setIpva(true);
-            System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!\n");
+            System.out.println("\nO veiculo com o id: " + (id+1) + " esta com o IPVA pago!\n");
         }
     }
 
