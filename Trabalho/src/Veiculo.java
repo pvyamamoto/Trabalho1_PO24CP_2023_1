@@ -5,7 +5,7 @@ public class Veiculo implements Serializable{
     private int id = 0;
     private String[] desenho = new String[4];
     private int distanciaPercorrida;
-    private static int quantidadeRodas = 4;
+    private static final int quantidadeRodas = 4;
     private Roda[] rodas = new Roda[getQuantidadeRodas()];
     private boolean ipva;
     private double combustivel;
