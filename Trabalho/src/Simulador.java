@@ -120,16 +120,6 @@ public class Simulador implements Serializable{
         }
     }
 
-    public String getPista(){
-        String pista = null;
-
-        for(int i = 0;i<this.getQtidVeiculos();i++){
-            pista += "Veiculo "+this.getVeiculos()[i].getId()+":";
-            pista += this.getVeiculos()[i].getDesenho();
-        }
-        return pista;
-    }
-
     public String toString(int id){
         if(id == -1){
             return "Veiculo inexistente! Tente novamente\n";

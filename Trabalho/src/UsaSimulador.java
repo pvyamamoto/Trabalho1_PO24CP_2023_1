@@ -100,8 +100,9 @@ public class UsaSimulador{
                     simulador.imprimirPista();
                     break;
                 case 14:
+                    teclado.nextLine();
                     System.out.println("Informe o caminho para salvar o arquivo (formato \"C:\\caminho\\\"):");
-                    String pathOut = teclado.next();
+                    String pathOut = teclado.nextLine();
 
                     File simOut = new File(pathOut+"\\sim.txt");
                     try{
@@ -114,14 +115,15 @@ public class UsaSimulador{
                         oos.close();
                         fos.close();
 
-                        System.out.println("\nOs veiculos foram gravados\n");
+                        System.out.println("\nOs veiculos foram gravados.\n");
                     }catch(Exception ex){
                         System.err.println("erro: "+ ex);
                     }
                     break;
                 case 15:
+                    teclado.nextLine();
                     System.out.println("Informe o caminho para ler o arquivo (formato \"C:\\caminho\\\"):");
-                    String pathIn = teclado.next();
+                    String pathIn = teclado.nextLine();
                     File simIn = new File(pathIn);
                     try{
                         FileInputStream fin = new FileInputStream(simIn);
@@ -137,10 +139,10 @@ public class UsaSimulador{
                     }
                     break;
                 case 16:
-                    System.out.println("\nVoce saiu da aplicacao ");
+                    System.out.println("\nVoce saiu da aplicacao.");
                     break;
                 default:
-                    System.out.println("Opcao invalida. Tente Novamente");
+                    System.out.println("Opcao invalida. Tente Novamente.");
             }
         }while(opcao != 16);
 
