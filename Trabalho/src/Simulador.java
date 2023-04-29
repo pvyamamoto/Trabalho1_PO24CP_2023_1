@@ -1,27 +1,27 @@
 import java.io.Serializable;
 
 public class Simulador implements Serializable{
-
+    //declaracao de variaveis
     private Veiculo[] veiculos = new Veiculo[this.getMaxVeiculos()];
     private int qtidVeiculos;
     private int id = 0;
     private final int maxVeiculos = 20;
-
     public Simulador(){
         this.setQtidVeiculos(0);
-    }
+    }//construtor da classe simulador
 
     public int nextId(){
         return id+=1;
-    }
+    }//adiciona +1 ao id
 
+    //inclui um veiculo no array de veiculos
     public void incluirVeiculo(){
         Veiculo v = new Veiculo(nextId());
         this.setVeiculos(v, this.getQtidVeiculos()); // inicializa um veiculo no espaço do do vetor
         this.setQtidVeiculos(this.getQtidVeiculos() + 1);// adiciona 1 no set
     }
 
-
+    //calibra um pneu de um veiculo especifico
     public void calibraPneu(int idC,int idP){
         if(idC == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
@@ -33,6 +33,7 @@ public class Simulador implements Serializable{
         }
     }
 
+    //calibra os pneus de um veiculos
     public void calibraPneu(int id){
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
@@ -46,7 +47,7 @@ public class Simulador implements Serializable{
         }
     }
 
-
+    //calibra todos os pneus de todos os veiculos
     public void calibraPneu() {
         for (int i = 0; i < this.getQtidVeiculos(); i++) {
             for (int j = 1; j <= this.getVeiculos()[i].getQuantidadeRodas(); j++) {
@@ -58,6 +59,7 @@ public class Simulador implements Serializable{
         System.out.println("\nTodos os pneus de todos os carros foram calibrados\n");
     }
 
+    //paga o IPVA de um veiculo especifico
     public void pagaIPVA(int id){
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
@@ -66,13 +68,14 @@ public class Simulador implements Serializable{
             System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!\n");
         }
     }
-
+    //paga o IPVA de todos os veiculos
     public void pagaIPVA(){
         for(int i =0;i<this.getQtidVeiculos();i++){
             this.getVeiculos()[i].setIpva(true);
         }
     }
 
+    //remove um veiculo do array veiculos e move todos os veiculos -1 posicao
     public void removerVeiculo(int id){
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
@@ -86,6 +89,7 @@ public class Simulador implements Serializable{
         }
     }
 
+    //abastece quant de combustivel em um veiculo especifico
     public void abastecer(int id, double quant){
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
@@ -96,6 +100,7 @@ public class Simulador implements Serializable{
         }
     }
 
+    //move um veiculo 5 blocos
     public void mover(int id){
         if(id == -1){
             System.out.println("Veiculo inexistente! Tente novamente\n");
@@ -110,6 +115,7 @@ public class Simulador implements Serializable{
         }
     }
 
+    //move todos os veiculos 5 blocos
     public void mover(){
         for(int i=0;i<this.getQtidVeiculos(); i++){
             this.getVeiculos()[i].mover();
@@ -117,6 +123,7 @@ public class Simulador implements Serializable{
 
     }
 
+    //imprime a pista
     public void imprimirPista(){
         for(int i = 0;i<this.getQtidVeiculos();i++){
             System.out.println("Veiculo "+this.getVeiculos()[i].getId()+":");
@@ -124,6 +131,7 @@ public class Simulador implements Serializable{
         }
     }
 
+    //sobrecarga da funcao toString na classe Simulador
     public String toString(int id){
         if(id == -1){
             return "Veiculo inexistente! Tente novamente\n";
@@ -133,9 +141,12 @@ public class Simulador implements Serializable{
 
     }
 
+    //getter da variavel qtidVeiculos
     public int getQtidVeiculos() {
         return this.qtidVeiculos;
     }
+
+    //setter da variavel qtidVeiculos
     public void setQtidVeiculos(int qtidVeiculos) {
         if(this.getQtidVeiculos()>=20){
             System.out.println("Impossivel completar operacao, o vetor esta cheio\n");
@@ -144,20 +155,27 @@ public class Simulador implements Serializable{
         }
     }
 
+    //getter da variavel veiculos
     public Veiculo[] getVeiculos(){
         return veiculos;
     }
+
+    //setter da variavel veiculos
     public void setVeiculos(Veiculo[] veiculos){
         this.veiculos = veiculos;
     }
+
+    //setter de uma posicao da variavel veiculos
     public void setVeiculos(Veiculo veiculo, int pos){
         this.veiculos[pos] = veiculo;
     }
 
+    //getter da variavel maxVeiculos, e como a variavel é final nao possui setter
     public int getMaxVeiculos(){
         return maxVeiculos;
     }
 
+    //funcao para achar um veiculo especifico na array de veiculos
     public int getVeiculoPos(int id){
         for(int i = 0; i<this.getQtidVeiculos(); i++) {
             if(getVeiculos()[i].getId() == id)
