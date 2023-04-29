@@ -63,7 +63,7 @@ public class Simulador implements Serializable{
             System.out.println("Veiculo inexistente! Tente novamente\n");
         }else{
             this.getVeiculos()[this.getVeiculoPos(id)].setIpva(true);
-            System.out.println("\nO veiculo com o id: " + (id+1) + " esta com o IPVA pago!\n");
+            System.out.println("\nO veiculo com o id: " + id + " esta com o IPVA pago!\n");
         }
     }
 
@@ -91,7 +91,7 @@ public class Simulador implements Serializable{
             System.out.println("Veiculo inexistente! Tente novamente\n");
         }else{
             this.getVeiculos()[id].setCombustivel(this.getVeiculos()[id].getCombustivel() + quant);// setando o combustivel com oq tem + o adicionado
-            System.out.println("\nO veiculo com o id: " + id + " esta com " + this.getVeiculos()[id].getCombustivel() + " de combustivel no tanque\n");
+            System.out.printf("\nO veiculo com o id: " + (id+1) + " esta com  %.2f L de combustivel no tanque\n",(float) this.getVeiculos()[id].getCombustivel());
 
         }
     }
@@ -101,8 +101,12 @@ public class Simulador implements Serializable{
             System.out.println("Veiculo inexistente! Tente novamente\n");
 
         }else{
-            this.getVeiculos()[id].mover();
-            System.out.println("\nO veiculo com o id: " + id + " se moveu\n");
+            if(this.getVeiculos()[id].mover()){
+                this.getVeiculos()[id].mover();
+                System.out.println("\nO veiculo com o id: " + (id+1) + " se moveu\n");
+            }else{
+                System.out.println("\nO veiculo com o id: " + (id+1) + " nao se moveu\n");
+            }
         }
     }
 
